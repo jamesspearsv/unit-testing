@@ -3,8 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "source": [
-    "./src/pages/index.html",
-    "./src/pages/page.html"
+    "./src/pages/index.html"
   ],
   "scripts": {
     "test": "jest",
