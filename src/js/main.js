@@ -1,11 +1,11 @@
-import '../style/main.scss';
+import "../style/main.scss";
 
 export function isTrue() {
   return true;
 }
 
 export function capitalize(string) {
-  let newString = '';
+  let newString = "";
 
   for (let i = 0; i < string.length; i++) {
     const letter = i === 0 ? string[i].toUpperCase() : string[i];
@@ -17,7 +17,7 @@ export function capitalize(string) {
 }
 
 export function reverseString(string) {
-  let newString = '';
+  let newString = "";
 
   for (let i = string.length - 1; i >= 0; i--) {
     newString += string[i];
@@ -48,21 +48,19 @@ export const calculator = (() => {
 
 export function caesarCipher(string, key) {
   let numericString = [];
-  let newString = '';
+  let newString = "";
 
   if (key < 0) {
     key += 26;
   }
 
-  console.log(key);
-
   for (let letter of string) {
     let alphabet;
     // Pick which alphabet to use based on letter case
     if (letter.toUpperCase() === letter) {
-      alphabet = [...'ABCDEFGHIJKLMNOPQRSTUVWXYZ'];
+      alphabet = [..."ABCDEFGHIJKLMNOPQRSTUVWXYZ"];
     } else {
-      alphabet = [...'abcdefghijklmnopqrstuvwxyz'];
+      alphabet = [..."abcdefghijklmnopqrstuvwxyz"];
     }
 
     // find index of current letter
@@ -75,9 +73,37 @@ export function caesarCipher(string, key) {
 
     // encode current letter
     const encodedLetter = (index + key) % 26;
-    console.log(encodedLetter);
     newString += alphabet[encodedLetter];
   }
 
   return newString;
+}
+
+export function analyzeArray(array) {
+  const length = array.length;
+
+  const average =
+    array.reduce((sum, currentValue) => {
+      return (sum += currentValue);
+    }) / array.length;
+
+  let min = null;
+  array.forEach((element) => {
+    if (!min) {
+      min = element;
+    } else {
+      if (element < min) min = element;
+    }
+  });
+
+  let max = null;
+  array.forEach((element) => {
+    if (!max) {
+      max = element;
+    } else {
+      if (element > max) max = element;
+    }
+  });
+
+  return { length, average, min, max };
 }
